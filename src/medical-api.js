@@ -1,5 +1,7 @@
+import {printDoctor} from "./main.js";
 
-let apiKey = "2e559e877e70796d71ab32693a9e5c87";
+//// API Logic
+let apiKey = process.env.API_KEY;
 
 export function symptomSearch(symptomName){
 
@@ -24,6 +26,8 @@ export function symptomSearch(symptomName){
   symptomPromise.then(function(response){
     let apiResult = JSON.parse(response);
     console.log(apiResult);
+    printDoctor(apiResult);
+
   })
 }
 
@@ -50,6 +54,7 @@ export function doctorSearch(doctorName){
   doctorPromise.then(function(response){
     let apiResult = JSON.parse(response);
     console.log(apiResult);
+    printDoctor(apiResult);
   })
 
 }
