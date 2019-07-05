@@ -16,8 +16,13 @@ label{
   margin: auto;
 }
 
+.form-wrapper{
+  background-color: tan;
+  padding: 10px;
+  margin-bottom: 3%;
+}
+
 .doctor-result{
-  width: 60%;
   margin: auto;
   background-color: tan;
 }

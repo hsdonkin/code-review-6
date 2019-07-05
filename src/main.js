@@ -10,7 +10,9 @@ import {symptomSearch, doctorSearch} from "./medical-api.js";
 // This appends the page with results from the api call
 export function printDoctor(searchResult){
   $(".output").text("");
-  if (searchResult.data.length === 0) {
+  if ($(".location-state").val() === "" || $(".location-city").val() === "") {
+    return $(".output").append(`<div class="doctor-result"><p>Sorry! Please select a city and state!</p></div>`);
+  } else if (searchResult.data.length === 0) {
     return $(".output").append(`<div class="doctor-result"><p>Sorry! No results found!</p></div>`);
 
   }
@@ -46,7 +48,8 @@ $(document).ready(function(){
     event.preventDefault();
     console.log("Searching by symptom");
     let userInput = $(".symptom-input").val();
-      let location = ($(".location-state").val() +  "-" + $(".location-city").val()).toLowerCase();
+    let location = ($(".location-state").val() +  "-" + $(".location-city").val()).toLowerCase();
+    console.log(location);
     symptomSearch(userInput, location);
 
 

@@ -9,27 +9,29 @@
       <div class="jumbotron">
         <h1>Medical Search</h1>
       </div>
-      <div class="location-wrapper">
-        <label for="">City</label>
-        <input class="location-city" type="text" name="" value="">
-        <label for="">State</label>
-        <input class="location-state" type="text" name="" value="">
+      <div class="form-wrapper">
+        <div class="location-wrapper">
+          <label for="">City</label>
+          <input class="location-city" type="text" name="" value="">
+          <label for="">State</label>
+          <input class="location-state" type="text" name="" value="">
+        </div>
+        <form class="symptom-search" action="index.html" method="post">
+          <label for="">My problem:</label>
+          <input class="symptom-input" type="text" name="" value="">
+          <button type="submit" name="button">Search</button>
+        </form>
+        <form class="doctor-search" action="index.html" method="post">
+          <label for="">Search for Doctor by Name</label>
+          <input class="doctor-input" type="text" name="" value="">
+          <button type="submit" name="button">Search</button>
+        </form>
       </div>
-      <form class="symptom-search" action="index.html" method="post">
-        <label for="">My problem:</label>
-        <input class="symptom-input" type="text" name="" value="">
-        <button type="submit" name="button">Search</button>
-      </form>
-      <form class="doctor-search" action="index.html" method="post">
-        <label for="">Search for Doctor by Name</label>
-        <input class="doctor-input" type="text" name="" value="">
-        <button type="submit" name="button">Search</button>
-      </form>
+      <div class="output">
+
+      </div>
     </div>
 
-    <div class="output">
-
-    </div>
 
 
   </body>
