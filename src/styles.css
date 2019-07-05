@@ -1,4 +1,23 @@
+h2{
+  font-size: 1rem;
+}
+
+label{
+  display: block;
+}
+.jumbotron{
+  background-color: lightgreen;
+  padding: 10px;
+  margin-top: 3%;
+}
+
 .wrapper{
   width: 60%;
   margin: auto;
+}
+
+.doctor-result{
+  width: 60%;
+  margin: auto;
+  background-color: tan;
 }

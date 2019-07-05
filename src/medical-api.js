@@ -3,11 +3,11 @@ import {printDoctor} from "./main.js";
 //// API Logic
 let apiKey = process.env.API_KEY;
 
-export function symptomSearch(symptomName){
+export function symptomSearch(symptomName,location){
 
   let symptomPromise = new Promise(function(resolve,reject){
     let request = new XMLHttpRequest();
-    let url = `https://api.betterdoctor.com/2016-03-01/doctors?user_key=${apiKey}&location=or-portland&query=${symptomName}`
+    let url = `https://api.betterdoctor.com/2016-03-01/doctors?user_key=${apiKey}&location=${location}&query=${symptomName}`
 
     request.onload = function(){
       if (this.status === 200) {
@@ -31,11 +31,11 @@ export function symptomSearch(symptomName){
   })
 }
 
-export function doctorSearch(doctorName){
+export function doctorSearch(doctorName,location){
 
   let doctorPromise = new Promise(function(resolve,reject){
     let request = new XMLHttpRequest();
-    let url = `https://api.betterdoctor.com/2016-03-01/doctors?user_key=${apiKey}&location=or-portland&name=${doctorName}`;
+    let url = `https://api.betterdoctor.com/2016-03-01/doctors?user_key=${apiKey}&location=${location}&name=${doctorName}`;
 
     request.onload = function(){
       if (this.status === 200) {
