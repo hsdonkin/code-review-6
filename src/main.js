@@ -2,7 +2,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 import $ from 'jquery';
-import {symptomSearch, doctorSearch} from "./medical-api.js";
+import {apiKey, mapsAPIKey, symptomSearch, doctorSearch} from "./medical-api.js";
+
 
 
 
@@ -40,10 +41,21 @@ export function printDoctor(searchResult){
 }
 
 
+/// iframe Logic
+
+function setMapLocation(location){
+  console.log(mapsAPIKey);
+  $(".maps-wrapper iframe").attr("src",`https://www.google.com/maps/embed/v1/search?q=${$(".location-city").val()}&key=${mapsAPIKey}`);
+}
+
+
 
 //// UI Logic
 
 $(document).ready(function(){
+  
+  $(".maps-wrapper iframe").attr("src",`https://www.google.com/maps/embed/v1/search?q=Portland&key=${mapsAPIKey}`);
+
   $(".symptom-search").submit(function(event){
     event.preventDefault();
     console.log("Searching by symptom");
@@ -51,6 +63,7 @@ $(document).ready(function(){
     let location = ($(".location-state").val() +  "-" + $(".location-city").val()).toLowerCase();
     console.log(location);
     symptomSearch(userInput, location);
+    setMapLocation(location);
 
 
   });
@@ -63,6 +76,7 @@ $(document).ready(function(){
     let location = ($(".location-state").val() +  "-" + $(".location-city").val()).toLowerCase();
     console.log(location);
     doctorSearch(userInput,location);
+    setMapLocation(location);
   });
 
 

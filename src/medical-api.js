@@ -1,7 +1,10 @@
 import {printDoctor} from "./main.js";
 
 //// API Logic
-let apiKey = process.env.API_KEY;
+export let apiKey = process.env.DOCTOR_API_KEY;
+export let mapsAPIKey = process.env.MAPS_API_KEY;
+console.log(apiKey);
+console.log(mapsAPIKey);
 
 export function symptomSearch(symptomName,location){
 
