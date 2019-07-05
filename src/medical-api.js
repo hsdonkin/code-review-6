@@ -30,6 +30,7 @@ export function symptomSearch(symptomName,location){
     let apiResult = JSON.parse(response);
     console.log(apiResult);
     printDoctor(apiResult);
+    generateMarkers(apiResult);
 
   })
 }
@@ -58,6 +59,29 @@ export function doctorSearch(doctorName,location){
     let apiResult = JSON.parse(response);
     console.log(apiResult);
     printDoctor(apiResult);
+    generateMarkers(apiResult);
   })
 
+}
+
+/// google maps markers
+
+export class MapMarker{
+  constructor(name, address){
+    this.name = name;
+    this.address = address;
+  }
+}
+
+export function generateMarkers(apiResult){
+  let officeLoc = [];
+  // this goes through all the objects and creates an array of office locations
+  apiResult.data.forEach(function(entry){
+    entry.practices.forEach(function(practice){
+      let marker = new MapMarker(practice.name,practice.visit_address.street);
+      officeLoc.push(marker);
+
+    });
+  });
+  console.log(officeLoc);
 }
