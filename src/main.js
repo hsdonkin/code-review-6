@@ -32,7 +32,12 @@ export function printDoctor(searchResult){
     }
 
     // appending accepting patients
-
+    for(let i = 0; i < entry.practices.length; i++){
+      if (entry.practices[i].accepts_new_patients === true) {
+         $(`.result${doctorResultID}`).append(`<div>Accepting new patients</div>`);
+         i=entry.practices.length;
+      }
+    }
 
 
     // appending doctor bio
@@ -53,7 +58,7 @@ function setMapLocation(location){
 //// UI Logic
 
 $(document).ready(function(){
-  
+
   $(".maps-wrapper iframe").attr("src",`https://www.google.com/maps/embed/v1/search?q=Portland&key=${mapsAPIKey}`);
 
   $(".symptom-search").submit(function(event){
