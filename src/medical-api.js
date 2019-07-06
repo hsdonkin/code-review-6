@@ -67,7 +67,7 @@ export function doctorSearch(doctorName,location){
 /// google maps markers
 
 export class MapMarker{
-  constructor(name, address){
+  constructor(name, physician, address){
     this.name = name;
     this.address = address;
   }
@@ -78,9 +78,9 @@ export function generateMarkers(apiResult){
   // this goes through all the objects and creates an array of office locations
   apiResult.data.forEach(function(entry){
     entry.practices.forEach(function(practice){
-      let marker = new MapMarker(practice.name,practice.visit_address.street);
+      let marker = new MapMarker(practice.name, practice.visit_address.street);
       officeLoc.push(marker);
-
+      return officeLoc;
     });
   });
   console.log(officeLoc);

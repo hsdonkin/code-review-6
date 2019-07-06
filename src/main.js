@@ -8,6 +8,7 @@ import {apiKey, mapsAPIKey, symptomSearch, doctorSearch} from "./medical-api.js"
 
 
 
+
 // This appends the page with results from the api call
 export function printDoctor(searchResult){
   $(".output").text("");
@@ -35,23 +36,46 @@ export function printDoctor(searchResult){
     for(let i = 0; i < entry.practices.length; i++){
       if (entry.practices[i].accepts_new_patients === true) {
          $(`.result${doctorResultID}`).append(`<div>Accepting new patients</div>`);
+         // set i to the loop end condition so it doesn't keep running
          i=entry.practices.length;
       }
     }
-
-
     // appending doctor bio
     $(`.result${doctorResultID}`).append(`<div><p>${entry.profile.bio}</p></div>`);
   });
 }
 
 
-/// iframe Logic
+/// maps Logic
+// none of the google stuff is working yet, so just commenting it out for now....
 
 function setMapLocation(location){
   console.log(mapsAPIKey);
   $(".maps-wrapper iframe").attr("src",`https://www.google.com/maps/embed/v1/search?q=${$(".location-city").val()}&key=${mapsAPIKey}`);
 }
+
+// const googleMapsClient = require('@google/maps').createClient({
+//   key: `${mapsAPIKey}`
+// });
+//
+// function setAPIKey(){
+//   $("header script").attr("src",`https://maps.googleapis.com/maps/api/js?key=${mapsAPIKey}&callback=initMap`);
+// }
+
+// function initMap() {
+//   var myLatLng = {lat: -25.363, lng: 131.044};
+//
+//   var map = new google.maps.Map(document.getElementById('map'), {
+//     zoom: 4,
+//     center: myLatLng
+//   });
+//
+//   var marker = new google.maps.Marker({
+//     position: myLatLng,
+//     map: map,
+//     title: 'Hello World!'
+//   });
+// }
 
 
 
@@ -60,6 +84,8 @@ function setMapLocation(location){
 $(document).ready(function(){
 
   $(".maps-wrapper iframe").attr("src",`https://www.google.com/maps/embed/v1/search?q=Portland&key=${mapsAPIKey}`);
+  // initMap();
+  // setAPIKey();
 
   $(".symptom-search").submit(function(event){
     event.preventDefault();
